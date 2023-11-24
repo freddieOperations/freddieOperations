@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>host.example.com-443/&lt;NOSRV&gt; или 503 service unavailable</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,20 +18,6 @@
 
         h1 {
             color: #333;
-        }
-
-        code {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            padding: 5px;
-            font-family: Consolas, "Courier New", monospace;
-        }
-
-        pre {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            padding: 10px;
-            overflow-x: auto;
         }
 
         .example {
@@ -43,24 +33,20 @@
     <section class="example">
         <h2>Проблема с 503 ошибкой</h2>
         <p>При обращении Prometheus к сервису по URL получаем 503 ошибку:</p>
-        <pre>
-            <code>
-                host.example.com-443~ host.example.com-443/&lt;NOSRV&gt; -1/-1/-1/-1/0 503 217 - - SC-- 174/71/0/0/0 0/0 "GET /some/path/metrics HTTP/1.1"
-            </code>
-        </pre>
+        <pre><code class="hljs">
+host.example.com-443~ host.example.com-443/&lt;NOSRV&gt; -1/-1/-1/-1/0 503 217 - - SC-- 174/71/0/0/0 0/0 "GET /some/path/metrics HTTP/1.1"
+        </code></pre>
     </section>
 
     <section class="example">
         <h2>Пример джоба для сбора метрик</h2>
-        <pre>
-            <code>
-                - job_name: someName
-                  static_configs:
-                  - targets: ['host.example.com']
-                    metrics_path: /some/path/metrics
-                    scheme: https
-            </code>
-        </pre>
+        <pre><code class="hljs">
+- job_name: someName
+  static_configs:
+  - targets: ['host.example.com']
+    metrics_path: /some/path/metrics
+    scheme: https
+        </code></pre>
     </section>
 
     <section class="example">
