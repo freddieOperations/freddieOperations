@@ -28,10 +28,12 @@
 </head>
 <body>
 
-    <h1>Документация Prometheus</h1>
+    <ul>
+        <li><a href="../index.html">На главную</a></li>
+    </ul>
 
     <section class="example">
-        <h2>Проблема с 503 ошибкой</h2>
+        <h2>host.example.com-443/&lt;NOSRV&gt; или 503 service unavailable</h2>
         <p>При обращении Prometheus к сервису по URL получаем 503 ошибку:</p>
         <pre><code class="hljs">
 host.example.com-443~ host.example.com-443/&lt;NOSRV&gt; -1/-1/-1/-1/0 503 217 - - SC-- 174/71/0/0/0 0/0 "GET /some/path/metrics HTTP/1.1"
